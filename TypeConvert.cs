@@ -93,7 +93,7 @@ namespace CommonExpand
         /// <summary>
         /// 将object转换为short，若转换失败，则返回0。不抛出异常。  
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
         public static short ParseToShort(this object obj)
         {
@@ -111,6 +111,7 @@ namespace CommonExpand
         /// 将object转换为short，若转换失败，则返回指定值。不抛出异常。  
         /// </summary>
         /// <param name="str"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
         public static short ParseToShort(this object str, short defaultValue)
         {
@@ -130,6 +131,7 @@ namespace CommonExpand
         /// 将object转换为demical，若转换失败，则返回指定值。不抛出异常。  
         /// </summary>
         /// <param name="str"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
         public static decimal ParseToDecimal(this object str, decimal defaultValue)
         {
@@ -183,8 +185,9 @@ namespace CommonExpand
         /// 将object转换为bool，若转换失败，则返回指定值。不抛出异常。  
         /// </summary>
         /// <param name="str"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static bool ParseToBool(this object str, bool result)
+        public static bool ParseToBool(this object str, bool defaultValue)
         {
             try
             {
@@ -192,7 +195,7 @@ namespace CommonExpand
             }
             catch
             {
-                return result;
+                return defaultValue;
             }
         }
         #endregion
@@ -219,8 +222,9 @@ namespace CommonExpand
         /// 将object转换为float，若转换失败，则返回指定值。不抛出异常。  
         /// </summary>
         /// <param name="str"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static float ParseToFloat(this object str, float result)
+        public static float ParseToFloat(this object str, float defaultValue)
         {
             try
             {
@@ -228,7 +232,7 @@ namespace CommonExpand
             }
             catch
             {
-                return result;
+                return defaultValue;
             }
         }
         #endregion
@@ -254,7 +258,8 @@ namespace CommonExpand
 
         #region 转换为DateTime
         /// <summary>
-        /// 将string转换为DateTime，若转换失败，则返回日期最小值。不抛出异常。  
+        /// 将string转换为DateTime，若转换失败，则返回日期最小值。不抛出异常。 
+        /// 常见的有：yyyy(-/.)MM(-/.)dd；yyyy(-/.)MM(-/.)dd HH:mm:ss；yyyyMMdd；yyyyMMddHHmmss
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -266,7 +271,7 @@ namespace CommonExpand
                 {
                     return DateTime.MinValue;
                 }
-                if (str.Contains("-") || str.Contains("/"))
+                if (str.Contains("-") || str.Contains("/") || str.Contains("."))
                 {
                     return DateTime.Parse(str);
                 }
@@ -300,9 +305,10 @@ namespace CommonExpand
 
         /// <summary>
         /// 将string转换为DateTime，若转换失败，则返回默认值。  
+        /// 常见的有：yyyy(-/.)MM(-/.)dd；yyyy(-/.)MM(-/.)dd HH:mm:ss；yyyyMMdd；yyyyMMddHHmmss
         /// </summary>
         /// <param name="str"></param>
-        /// <param name="defaultValue"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
         public static DateTime ParseToDateTime(this string str, DateTime? defaultValue)
         {
@@ -312,7 +318,7 @@ namespace CommonExpand
                 {
                     return defaultValue.GetValueOrDefault();
                 }
-                if (str.Contains("-") || str.Contains("/"))
+                if (str.Contains("-") || str.Contains("/") || str.Contains("."))
                 {
                     return DateTime.Parse(str);
                 }
@@ -349,7 +355,7 @@ namespace CommonExpand
         /// <summary>
         /// 将object转换为string，若转换失败，则返回""。不抛出异常。  
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
         public static string ParseToString(this object obj)
         {
@@ -369,6 +375,12 @@ namespace CommonExpand
                 return string.Empty;
             }
         }
+        /// <summary>
+        /// 数组转字符串
+        /// </summary>
+        /// <typeparam name="T">数组</typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string ParseToStrings<T>(this object obj)
         {
             try
@@ -413,7 +425,7 @@ namespace CommonExpand
         /// 将object转换为double，若转换失败，则返回指定值。不抛出异常。  
         /// </summary>
         /// <param name="str"></param>
-        /// <param name="defaultValue"></param>
+        /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
         public static double ParseToDouble(this object str, double defaultValue)
         {
@@ -432,8 +444,8 @@ namespace CommonExpand
         /// <summary>
         /// 强制转换类型
         /// </summary>
-        /// <typeparam name="TResult"></typeparam>
-        /// <param name="source"></param>
+        /// <typeparam name="TResult">强制转换的类型</typeparam>
+        /// <param name="source">当前数据源</param>
         /// <returns></returns>
         public static IEnumerable<TResult> CastSuper<TResult>(this IEnumerable source)
         {
