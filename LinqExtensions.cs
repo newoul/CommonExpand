@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace ExpandComponents
+namespace CommonExpand
 {
     /// <summary>
     /// Linq拓展
