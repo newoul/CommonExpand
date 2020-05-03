@@ -7,7 +7,7 @@ using System.Data.OleDb;
 using System.IO;
 using DataTable = System.Data.DataTable;
 
-namespace ExpandComponents
+namespace CommonExpand
 {
     /********************************************************************************
 
