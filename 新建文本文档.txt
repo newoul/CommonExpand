@@ -2,11 +2,9 @@ g:
 
 cd  G:\Git\CommonExpand
 
-nuget spec
+nuget spec CommonExpand.1.0.1
 
-修改 CommonExpand.nuspec 的版本号
-
-nuget pack
+nuget pack CommonExpand.1.0.1
 
 nuget push CommonExpand.1.0.1.nupkg oy2bbjz5o5mmnynnj2aayg4oyttj6a2ejmvilmcjbev4qu -Source https://api.nuget.org/v3/index.json
 

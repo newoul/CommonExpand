@@ -10,13 +10,15 @@ namespace CommonExpand
     /// </summary>
     public static partial class TypeConvert
     {
+        #region String转各种类型
+
         #region 转换为long
         /// <summary>
         /// 将object转换为long，若转换失败，则返回0。不抛出异常。  
         /// </summary>
-        /// <param name="str"></param>
+        /// <param name="obj"></param>
         /// <returns></returns>
-        public static long ParseToLong(this object obj)
+        public static long ParseToLong(this string obj)
         {
             try
             {
@@ -53,7 +55,7 @@ namespace CommonExpand
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static int ParseToInt(this object str)
+        public static int ParseToInt(this string str)
         {
             try
             {
@@ -72,7 +74,7 @@ namespace CommonExpand
         /// <param name="str"></param>
         /// <param name="defaultValue"></param>
         /// <returns></returns>
-        public static int ParseToInt(this object str, int defaultValue)
+        public static int ParseToInt(this string str, int defaultValue)
         {
             if (str == null)
             {
@@ -95,7 +97,7 @@ namespace CommonExpand
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static short ParseToShort(this object obj)
+        public static short ParseToShort(this string obj)
         {
             try
             {
@@ -113,7 +115,7 @@ namespace CommonExpand
         /// <param name="str"></param>
         /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static short ParseToShort(this object str, short defaultValue)
+        public static short ParseToShort(this string str, short defaultValue)
         {
             try
             {
@@ -133,7 +135,7 @@ namespace CommonExpand
         /// <param name="str"></param>
         /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static decimal ParseToDecimal(this object str, decimal defaultValue)
+        public static decimal ParseToDecimal(this string str, decimal defaultValue)
         {
             try
             {
@@ -150,7 +152,7 @@ namespace CommonExpand
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static decimal ParseToDecimal(this object str)
+        public static decimal ParseToDecimal(this string str)
         {
             try
             {
@@ -169,7 +171,7 @@ namespace CommonExpand
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static bool ParseToBool(this object str)
+        public static bool ParseToBool(this string str)
         {
             try
             {
@@ -187,7 +189,7 @@ namespace CommonExpand
         /// <param name="str"></param>
         /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static bool ParseToBool(this object str, bool defaultValue)
+        public static bool ParseToBool(this string str, bool defaultValue)
         {
             try
             {
@@ -206,7 +208,7 @@ namespace CommonExpand
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static float ParseToFloat(this object str)
+        public static float ParseToFloat(this string str)
         {
             try
             {
@@ -224,7 +226,7 @@ namespace CommonExpand
         /// <param name="str"></param>
         /// <param name="defaultValue">默认值</param>
         /// <returns></returns>
-        public static float ParseToFloat(this object str, float defaultValue)
+        public static float ParseToFloat(this string str, float defaultValue)
         {
             try
             {
@@ -351,7 +353,44 @@ namespace CommonExpand
         }
         #endregion
 
-        #region 转换为string
+        #region 转换为double
+        /// <summary>
+        /// 将object转换为double，若转换失败，则返回0。不抛出异常。  
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static double ParseToDouble(this string obj)
+        {
+            try
+            {
+                return double.Parse(obj.ToString());
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// 将object转换为double，若转换失败，则返回指定值。不抛出异常。  
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="defaultValue">默认值</param>
+        /// <returns></returns>
+        public static double ParseToDouble(this string str, double defaultValue)
+        {
+            try
+            {
+                return double.Parse(str.ToString());
+            }
+            catch
+            {
+                return defaultValue;
+            }
+        }
+        #endregion
+
+        #region 各类型转换为string
         /// <summary>
         /// 将object转换为string，若转换失败，则返回""。不抛出异常。  
         /// </summary>
@@ -381,7 +420,7 @@ namespace CommonExpand
         /// <typeparam name="T">数组</typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public static string ParseToStrings<T>(this object obj)
+        public static string ParseToStrings<T>(this IEnumerable<T> obj)
         {
             try
             {
@@ -403,41 +442,10 @@ namespace CommonExpand
         }
         #endregion
 
-        #region 转换为double
-        /// <summary>
-        /// 将object转换为double，若转换失败，则返回0。不抛出异常。  
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static double ParseToDouble(this object obj)
-        {
-            try
-            {
-                return double.Parse(obj.ToString());
-            }
-            catch
-            {
-                return 0;
-            }
-        }
-
-        /// <summary>
-        /// 将object转换为double，若转换失败，则返回指定值。不抛出异常。  
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="defaultValue">默认值</param>
-        /// <returns></returns>
-        public static double ParseToDouble(this object str, double defaultValue)
-        {
-            try
-            {
-                return double.Parse(str.ToString());
-            }
-            catch
-            {
-                return defaultValue;
-            }
-        }
+        //public static void test() {
+        //    var ss = new int[]{ 1,2,3};
+        //  var bb=  ss.ParseToStrings();
+        //}
         #endregion
 
         #region 强制转换类型
