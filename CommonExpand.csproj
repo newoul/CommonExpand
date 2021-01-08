@@ -72,6 +72,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
@@ -109,8 +110,10 @@
     <Compile Include="Encryption_DES.cs" />
     <Compile Include="ExcelExpand.cs" />
     <Compile Include="LinqExtensions.cs" />
+    <Compile Include="MD5Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegexCommon.cs" />
+    <Compile Include="SealHelper.cs" />
     <Compile Include="TypeCheck.cs" />
     <Compile Include="TypeConvert.cs" />
     <Compile Include="ValidateError.cs" />
