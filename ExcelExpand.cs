@@ -1413,7 +1413,7 @@ namespace ExpandComponents
                     ICell cell = headerRow.GetCell(i);
                     if (cell != null)
                     {
-                        string cellValue = cell.StringCellValue;
+                        string cellValue = GetCellValue(cell);
                         if (cellValue != null)
                         {
                             cellValue = cellValue.Trim().Replace(" ", "");
