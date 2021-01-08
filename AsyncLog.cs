@@ -21,7 +21,7 @@ namespace CommonExpand
     /// <summary>
     /// 异步日志
     /// </summary>
-    public sealed class AsyncLog
+    public static class AsyncLog
     {
         /// <summary>
         /// 相对路径

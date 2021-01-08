@@ -9,7 +9,7 @@ namespace CommonExpand
     /// <summary>
     /// Cookie配置
     /// </summary>
-    public class CookieConfigure
+    public static class CookieConfigure
     {
         /// <summary>
         /// 该Cookie是否已存在
